@@ -10,7 +10,11 @@
     <div class="row">   
       <div class="col-md-6 offset-md-3 mt-3">
               <ul  class="list-group">
-                <li class="list-group-item" v-for="(data,index) in skills" :key="index">{{data.skill}}</li>
+                <li class="list-group-item" v-for="(data,index) in skills" :key="index">
+                  {{data.skill}}
+                  <i class="fa fa-minus-circle" @click="remove(index)"></i>
+
+                </li>
             </ul> 
       </div>       
     </div>
@@ -33,6 +37,9 @@ export default {
     addSkill(){
       this.skills.push({'skill':this.skill});
       this.skill = '';
+    },
+    remove(id){
+      this.skills.splice(id,1);  
     }
   }
 }
@@ -40,5 +47,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+i{
+  float:right;
+  cursor: pointer;
+}
 
 </style>
